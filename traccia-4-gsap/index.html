@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"> charset="utf-8"></script>
+    <title>GSAP</title>
+
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        background-color: #ffbf80;
+      }
+
+      .container {
+        text-align: center;
+        line-height: 300px;
+      }
+
+      #userInput {
+        padding: 5px;
+        width: 300px;
+        outline: none;
+        border-radius: 5px;
+        border-width: 1px;
+      }
+
+      #btn {
+        background-color: lightcoral;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        border-width: 0;
+        cursor: pointer;
+        outline: none;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 40px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input id="userInput" type="text" name="" value="" placeholder="Scrivi qualcosa...">
+      <button id="btn" type="button" name="button">Start</button>
+    </div>
+    <h1 id="title"></h1>
+
+
+    <script type="text/javascript">
+
+
+
+
+      var btn = document.getElementById('btn');
+      btn.addEventListener("click", startAnimation);
+
+      document.addEventListener("keydown", function(e) {
+        if (e.keyCode === 13) {
+          startAnimation();
+        }
+      });
+
+      function startAnimation() {
+        var input = document.getElementById("userInput").value;
+        document.getElementById('title').innerHTML= input;
+
+        var tl = gsap.timeline();
+        var mySplitText = new SplitText("#title", {type: "chars"});
+        var chars = mySplitText.chars;
+
+
+        tl.fromTo(chars, 1, {scale: 0, opacity: 0}, {scale: 1, opacity: 1, stagger: {amount: 2}}, 0.5);
+        input = document.getElementById("userInput").value = '';
+
+      }
+
+    </script>
+  </body>
+</html>

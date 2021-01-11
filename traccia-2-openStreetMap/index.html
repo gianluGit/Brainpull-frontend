@@ -1,0 +1,205 @@
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+  
+  <style>
+    * {
+      font-family: 'Ubuntu', sans-serif;
+    }
+    .leaflet-container a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      display: block;
+    }
+
+    a:hover {
+      color: #ffa31a;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div style="width: 100vw; height: 100vh" id="map"></div>
+
+
+  <script type="text/javascript">
+    const map = new L.Map('map', {
+      center: new L.LatLng(41.92820122259948, 13.212208435502207),
+      zoom: 6,
+      maxZoom: 18
+    });
+
+    const osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+    map.addLayer(osm);
+
+    let geojsonPdv = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 1",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 1</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=piazza+luigi+di+savoia+1+milano">
+                                Piazza Luigi di Savoia 1<br>
+                                Milano<br>
+                              </a>
+                              <br>
+                              <img src='imgs/piazza-savoia.jpeg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [9.206517216488363, 45.48688898678145]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 2",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 2</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=via+togliatti+2+milano">
+                                Via Togliatti 2<br>
+                                Milano<br>
+                              </a>
+                              <br>
+                              <img src='imgs/via-togliatti.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [9.069466841826396, 45.53250929124939]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 3",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 3</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=piazza+venticinque+aprile+milano">
+                                Piazza Venticinque Aprile<br>
+                                Milano<br>
+                              </a>
+                              <br>
+                              <img src='imgs/piazza-25-aprile.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [9.187072026484847, 45.48048716563958]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 4",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 4</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=via+emilia+ovest+1480+modena">
+                                Via Emilia Ovest 1480<br>
+                                Modena<br>
+                              </a>
+                              <br>
+                              <img src='imgs/via-emilia-ovest.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [10.854320311114265, 44.64846809747431]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 5",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 5</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=via+emilia+est+981+modena">
+                                Via Emilia Est 981<br>
+                                Modena<br>
+                              </a>
+                              <br>
+                              <img src='imgs/via-emilia-est.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [10.955313070627845, 44.63477926806329]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 6",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 6</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=via+orabona+4+bari">
+                                Via Orabona 4<br>
+                                Bari<br>
+                              </a>
+                              <br>
+                              <img src='imgs/via-orabona.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [16.884379226327127, 41.1082809271591]
+          }
+        },
+
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Punto vendita 7",
+            "amenity": "Locale commerciale",
+            "popupContent": ` <h1>Punto vendita 7</h1>
+                              <a href="https://www.google.com/maps/search/?api=1&query=piazza+ferrarese+28+bari">
+                                Piazza Ferrarese 28<br>
+                                Bari<br>
+                              </a>
+                              <br>
+                              <img src='imgs/piazza-ferrarese.jpg' style="width: 100%; height: auto">`
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [16.871958670502266, 41.127654678877846]
+          }
+        },
+
+      ]
+    };
+
+
+
+
+    var markers = L.markerClusterGroup();
+
+
+    for (var i = 0; i < geojsonPdv.features.length; i++) {
+      var tempMarker = L.marker(new L.LatLng(geojsonPdv.features[i].geometry.coordinates[1], geojsonPdv.features[i].geometry.coordinates[0]));
+      var popup = tempMarker.bindPopup(geojsonPdv.features[i].properties.popupContent);
+      markers.addLayer(tempMarker);
+    }
+
+
+    map.addLayer(markers);
+
+
+
+
+  </script>
+</body>
+
+</html>

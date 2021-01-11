@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Closure</title>
+  </head>
+  <body>
+
+
+    <script type="text/javascript">
+
+    // Esempio
+
+    var globale = 'variabile globale';
+    var miaFunzione;
+
+
+
+    function ext() {
+      var locale = 'variabile locale';
+      console.log('funzine esterna');
+
+      function int() {
+        console.log(locale);
+        console.log(globale);
+      }
+      miaFunzione = int;
+    }
+
+
+    ext();
+    miaFunzione();
+
+
+    /* Una Closure è definita da una fuzione e dagli scope a cui essa ha accesso.
+      Nell'esempio soprastante la funzione int() vive all'interno della sua funzione padre ext()
+      e ha accesso a var locale e a var globale. Uno dei vantaggi del conoscere la closure di una funzione
+      è poter appunto richiamare dall'esterno
+      una funzione che in teoria dovrebbe essere inacessibile e che dovrebbe esaurire il suo compito
+      una volta terminata l'esecuzione di ext(). Invece tramite un riferimento nella funzione ext(),
+      ovvero(miaFunzione = int), possiamo accedere dall'esterno ad una funzine interna.
+     */
+
+
+
+
+    </script>
+  </body>
+</html>
